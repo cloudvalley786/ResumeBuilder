@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert
+END
+.jshintrc
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/.jshintrc
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/LICENSE
+END
+gulpfile.js
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/gulpfile.js
+END
+package.json
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/package.json
+END
+sweetalert.gif
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/sweetalert.gif
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/.gitignore
+END
+test.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/test.php
+END
+.travis.yml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/.travis.yml
+END
+bower.json
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/bower.json
+END
+.editorconfig
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/.editorconfig
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/index.html
+END
+README.md
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/README.md
+END

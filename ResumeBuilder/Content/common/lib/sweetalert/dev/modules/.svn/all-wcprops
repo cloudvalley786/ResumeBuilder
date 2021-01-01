@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/dev/modules
+END
+default-params.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/dev/modules/default-params.js
+END
+injected-html.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/dev/modules/injected-html.js
+END
+handle-dom.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/dev/modules/handle-dom.js
+END
+handle-swal-dom.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/dev/modules/handle-swal-dom.js
+END
+set-params.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/dev/modules/set-params.js
+END
+handle-click.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/dev/modules/handle-click.js
+END
+utils.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/dev/modules/utils.js
+END
+handle-key.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/aksa-ep/!svn/ver/8/lib/sweetalert/dev/modules/handle-key.js
+END

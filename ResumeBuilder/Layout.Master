@@ -1,0 +1,178 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Layout.master.cs" Inherits="ResumeBuilder.Layout" %>
+
+<!DOCTYPE html>
+<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
+<html>
+<head runat="server">
+    <title>Career Dashboard</title>
+                <link href="Content/common/css/bootstrap.min.css" rel="stylesheet" />
+				<link href="Content/common/css/font-awesome.min.css" rel="stylesheet" />
+				<link href="Content/common/css/animate.min.css" rel="stylesheet" />
+				<link href="Content/common/css/prettyPhoto.css" rel="stylesheet" />
+				<link href="Content/common/css/main.css" rel="stylesheet" />
+				<link href="Content/common/css/responsive.css" rel="stylesheet" />
+				<link href="Content/common/css/new_fonts.css" rel="stylesheet" />
+				<link href="Content/common/css/jquery_ui.css" rel="stylesheet" />
+				<%--<link href="Content/common/images/ico/favicon.ico"rel="shortcut icon" />--%>
+				<%--<link href="Content/common/images/ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon-precomposed" sizes="144x144" />
+				<link href="Content/common/images/ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon-precomposed" sizes="114x114" />
+				<link href="Content/common/images/ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon-precomposed" sizes="72x72" />--%>
+				<link href="Content/common/lib/sweetalert/dist/sweetalert.css" rel="stylesheet" />
+				<link href="Content/common/css/selectize.default.css" type="text/css" rel="stylesheet" />
+				<script src="Content/common/lib/sweetalert/dist/sweetalert-dev.js" type="text/javascript" ></script>
+				<script src="Content/common/js/jquery.min.js" type="text/javascript" ></script>
+				<script src="Content/common/js/jquery.mask.min.js" type="text/javascript" ></script>
+				<script src="Content/common/js/google_jquery.js" type="text/javascript" ></script>
+				<script src="Content/common/js/google_jquery2.js" type="text/javascript" ></script>
+				<script src="Content/common/js/jquery_ui.js" type="text/javascript" ></script>
+				<script src="Content/common/javascripts/maskinput.js" type="text/javascript" ></script>
+				<script src="Content/common/javascripts/URLParser.js" type="text/javascript" ></script>
+				<script src="Content/common/javascripts/selectize.js" type="text/javascript" ></script>
+			<link href="Content/common/css/toastr.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+                
+			
+    </asp:ContentPlaceHolder>
+    	<style type="text/css">
+					
+					#myModal {
+						padding-top: 100px;
+					}
+					.modal-footer .btn + .btn
+					{
+						margin-bottom: 8px;
+					}
+					.camera {
+						background-color:#449d44;
+						border-radius:50px;
+						font-size:18px;
+						padding:5px;
+						margin-left:20px;
+						margin-top:05px;
+						cursor: pointer;
+						color:white;
+					}
+					.remove {
+						background-color:#d9534f;
+						border-radius:50px;
+						font-size:18px;
+						padding:5px;
+						margin-left:90px;
+						margin-top:05px;
+						cursor: pointer;
+						color:white;
+					}
+					#profile_image_clicked {
+						cursor: pointer;
+					}
+				</style>
+	 <script type="text/javascript">
+         <telerik:RadCodeBlock ID="RadCodeBlock5" runat="server">
+         function fileUploaded(sender, args) {
+             document.getElementById("<%= btnDummy.ClientID %>").click();
+		 }
+		 </telerik:RadCodeBlock>
+		 </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+          <telerik:RadFormDecorator ID="FormDecorator1" runat="server" DecoratedControls="None"></telerik:RadFormDecorator>
+
+        <telerik:RadScriptManager ID="RadScriptManager1" AsyncPostBackTimeout="600" runat="server"></telerik:RadScriptManager>
+
+    <div>
+		 <asp:HiddenField ID="hndID" runat="server" />
+                        <asp:HiddenField ID="hndUserID" runat="server" />
+        <section id="">
+						<div class="profile-head">
+							<div class="container">
+								<div class="col-md-10 col-sm-8 col-xs-12">
+									<h5 title="Name"><span class="wrap2" id="lblTitle" runat="server"></span></h5>
+									<%--<p title="Resume Title"><span class="wrap2">Resume Title</span></p>--%>
+									<ul>
+										<%--<li title="CNIC Number"><i class="glyphicon glyphicon-credit-card"></i>&nbsp;</li>--%>
+										<li title="Mobile Number"><i class="glyphicon glyphicon-phone"></i>&nbsp;<span class="wrap2" id="lblMobile" runat="server"></span></li>
+
+										<li title="E-mail Id"><i class="glyphicon glyphicon-envelope"></i>&nbsp;<span class="wrap2" id="lblEmail" runat="server"></span></li>
+									    <li><telerik:RadAsyncUpload ID="rdImgUpload" UploadedFilesRendering="BelowFileInput" MultipleFileSelection="Disabled" OnClientFileUploaded="fileUploaded" CssClass="text-center" AllowedFileExtensions=".jpeg,.jpg,.png" ControlObjectsVisibility="None" runat="server"></telerik:RadAsyncUpload>
+                                            </li><asp:Button ID="btnDummy" runat="server" onclick="btnDummy_Click" style="display: none;" />
+									</ul>
+
+								</div> <!-- END OF DIV col-md-7 -->
+								<div class="col-md-2">
+									  <asp:Image ID="previewImage" runat="server" Width="160px" Height="160px" BorderWidth="2" BorderStyle="Solid" Style="border-radius: 160px;" EnableTheming="False" ImageAlign="Top" />
+                                            <asp:LinkButton style="float:left" ID="lnkUpload" Visible="false" OnClick="lnkUpload_Click" runat="server">Upload</asp:LinkButton>           
+									</div>
+							</div> <!-- END OF DIV container -->
+
+							
+						</div> <!-- END OF DIV profile-head -->
+					</section>
+        <div class="container">
+						<div class="pagination">
+							<div class="btn-group btn-group-justified  btn-group-horizontal">
+								<div class="btn-group">
+									<a href="CreateProfile.aspx" class="btn btn-nav">
+										<span class="glyphicon glyphicon-user" aria-hidden="true"></span><div >Create Profile</div>
+									</a>
+								</div>
+								<div class="btn-group" role="group">
+                                    <a href="ViewProfile.aspx" class="btn btn-nav">
+										<span class="glyphicon glyphicon-file" aria-hidden="true"></span><div >View Profile</div>
+									</a>
+								</div>
+								<div class="btn-group" role="group">
+                                     <a href="ChangePassword.aspx" class="btn btn-nav">
+										<span class="glyphicon glyphicon-lock" aria-hidden="true"></span><div >Change Password</div>
+									</a>
+								</div>
+                                <div class="btn-group" role="group">
+									<a href="Logout.aspx" class="btn btn-nav">
+										<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><div >Logout</div>
+									</a>
+								</div>
+							</div>
+						</div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+            </div>
+    </div>
+    </form>
+
+	 <script src="Content/common/javascripts/toastr.min.js"></script>
+       <%
+           if (Session["Error"] != null)
+           {
+               Response.Write("<script> toastr.error('" + Session["Error"] + "')</script>");
+               Session["Error"] = null;
+           }
+           if (Session["Success"] != null)
+           {
+               Response.Write("<script> toastr.success('" + Session["Success"] + "')</script>");
+               Session["Success"] = null;
+           }
+    %>
+
+
+    <script type="text/javascript">
+		window.history.forward(-1);
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": false,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": false,
+            "showDuration": "3000",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    </script>
+</body>
+</html>
