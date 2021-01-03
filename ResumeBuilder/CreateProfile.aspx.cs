@@ -20,6 +20,13 @@ namespace ResumeBuilder
                 FillDOB();
                 FillLovs();
                 hndUserID.Value= Session["UserID"].ToString();
+                try
+                {
+                    hndID.Value = Session["EmployerID"].ToString();
+                }
+                catch (Exception)
+                {
+                }
                 txtFirstName.Text = Session["Name"].ToString();
                 txtEmail.Text = Session["Email"].ToString();
                 txtMobile.Text = Session["ContactNo"].ToString();

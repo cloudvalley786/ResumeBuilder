@@ -106,6 +106,7 @@ namespace ResumeBuilder
                 string desc = CLOVA.AddUpdateEmployerPhoto(Convert.ToInt32(id), Convert.ToInt32(hndUserID.Value), Convert.ToBase64String(data), Convert.ToInt32(hndUserID.Value),
                 Convert.ToInt32(hndUserID.Value), out employerID);
                 hndID.Value = employerID;
+                Session["EmployerID"]= employerID;
                 if (desc.ToLower().Contains("success"))
                 {
                     lnkUpload.Visible = false;
