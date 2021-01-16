@@ -17,12 +17,13 @@
             var txtEmail = document.getElementById('ContentPlaceHolder1_txtEmail').value;
             var txtMobile = document.getElementById('ContentPlaceHolder1_txtMobile').value;
             var txtCity = document.getElementById('ContentPlaceHolder1_txtCity').value;
-            var txtCountry = document.getElementById('ContentPlaceHolder1_txtCountry').value;
+            var cbCountry = document.getElementById('ContentPlaceHolder1_cbCountry').value;
             var txtPresentAddress = document.getElementById('ContentPlaceHolder1_txtPresentAddress').value;
             var txtPermanentAddress = document.getElementById('ContentPlaceHolder1_txtPermanentAddress').value; 
             var txtSpecilization = document.getElementById('ContentPlaceHolder1_txtSpecilization').value;
             var txtObjective = document.getElementById('ContentPlaceHolder1_txtObjective').value;
-            if (txtFirstName == "" || txtFatherName == "" || cbMaritialStatus == "0" || cbEmployeesGender == "0" || ddlYear == "" || ddlMonth == "" || ddlDay == "" || txtEmail == "" || txtMobile == "" || txtCity == "" || txtCountry == "" || txtPresentAddress == "" || txtPermanentAddress == "" || txtSpecilization == "" || txtObjective =="") {
+            var txtExperience = document.getElementById('ContentPlaceHolder1_txtExperience').value;
+            if (txtFirstName == "" || txtFatherName == "" || cbMaritialStatus == "0" || cbEmployeesGender == "0" || ddlYear == "" || ddlMonth == "" || ddlDay == "" || txtEmail == "" || txtMobile == "" || txtCity == "" || cbCountry == "0" || txtPresentAddress == "" || txtPermanentAddress == "" || txtSpecilization == "" || txtObjective == "" || txtExperience == "") {
                 document.getElementById('messageInfo').style.color = 'red';
                 document.getElementById('messageInfo').innerHTML = 'Please fill all mandatory <b>(*)</b> fields!';
                 return false;
@@ -39,11 +40,11 @@
             var txtMajorSubjects = document.getElementById('ContentPlaceHolder1_txtMajorSubjects').value;
             //var ddlCompletionYear = document.getElementById('ContentPlaceHolder1_ddlCompletionYear').value;
             var txtEduCity = document.getElementById('ContentPlaceHolder1_txtEduCity').value;
-            var txtEduCountry = document.getElementById('ContentPlaceHolder1_txtEduCountry').value;
+            var cbEduCountry = document.getElementById('ContentPlaceHolder1_cbEduCountry').value;
             var txtObtainMarks = document.getElementById('ContentPlaceHolder1_txtObtainMarks').value;
             var txtTotalMarks = document.getElementById('ContentPlaceHolder1_txtTotalMarks').value;
             var txtPercentage = document.getElementById('ContentPlaceHolder1_txtPercentage').value;
-            if (txtInstitute == "" || txtInstitute == "" || cbDegree == "0" || txtEduCity == "" || txtEduCountry == "" || txtObtainMarks == "" || txtTotalMarks == "" || txtPercentage == "") {
+            if (txtInstitute == "" || txtInstitute == "" || cbDegree == "0" || txtEduCity == "" || cbEduCountry == "0" || txtObtainMarks == "" || txtTotalMarks == "" || txtPercentage == "") {
                 document.getElementById('messageEdu').style.color = 'red';
                 document.getElementById('messageEdu').innerHTML = 'Please fill all mandatory <b>(*)</b> fields!';
                 return false;
@@ -56,14 +57,14 @@
         function validateExperience() {
             debugger;
             var txtCompanyName = document.getElementById('ContentPlaceHolder1_txtCompanyName').value;
-            var txtExperienceCountry = document.getElementById('ContentPlaceHolder1_txtExperienceCountry').value;
+            var cbExperienceCountry = document.getElementById('ContentPlaceHolder1_cbExperienceCountry').value;
             var cbCompanyType = document.getElementById('ContentPlaceHolder1_cbCompanyType').value;
             var cbRole = document.getElementById('ContentPlaceHolder1_cbRole').value;
             var txtLeavingReason = document.getElementById('ContentPlaceHolder1_txtLeavingReason').value;
             var dtStartDate = $find("<%=dtStartDate.ClientID %>");
              var dtEndDate = $find("<%=dtEndDate.ClientID %>");
 
-            if (txtCompanyName == "" || txtExperienceCountry == "" || cbCompanyType == "0" || cbRole == "0" || dtStartDate.get_dateInput().get_value() == "") {
+            if (txtCompanyName == "" || cbExperienceCountry == "0" || cbCompanyType == "0" || cbRole == "0" || dtStartDate.get_dateInput().get_value() == "") {
                 document.getElementById('messageExp').style.color = 'red';
                 document.getElementById('messageExp').innerHTML = 'Please fill all mandatory <b>(*)</b> fields!';
                 return false;
@@ -316,6 +317,13 @@
                             <!-- END OF DIV row -->
 
                             <div class="form-group row">
+                                 <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">
+                                    Country:<font face="Arial"><span class="style1">*</span></font>
+                                </label>
+                                <div class="col-sm-4">
+                                    <asp:DropDownList ID="cbCountry" runat="server" Width="100%"></asp:DropDownList>
+                                </div>
+
                                 <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">
                                     City:<font face="Arial"><span class="style1">*</span></font>
                                 </label>
@@ -323,13 +331,6 @@
                                     <asp:TextBox runat="server" ID="txtCity" CssClass="form-control" placeholder="City"></asp:TextBox>
                                 </div>
 
-
-                                <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">
-                                    Country:<font face="Arial"><span class="style1">*</span></font>
-                                </label>
-                                <div class="col-sm-4">
-                                    <asp:TextBox runat="server" ID="txtCountry" CssClass="form-control" placeholder="Country"></asp:TextBox>
-                                </div>
                             </div>
                             <!-- END OF DIV row -->
 
@@ -366,6 +367,26 @@
                                 <div class="col-sm-4">
                                     <asp:TextBox runat="server" ID="txtObjective" CssClass="form-control" placeholder="Objective"></asp:TextBox>
                                 </div>
+                            </div>
+                            <!-- END OF DIV row -->
+
+                            <div class="form-group row">
+                                <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">
+                                    Iqama Transfer:
+                                </label>
+                                <div class="col-sm-4">
+                                    <asp:RadioButtonList ID="rdIqamaTransfer" runat="server" RepeatDirection="Horizontal">
+                                    <asp:ListItem Text="No" Value="0" Selected="True"></asp:ListItem>
+                                    <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
+                        </asp:RadioButtonList></div>
+
+                                <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">
+                                    Experience:<font face="Arial"><span class="style1">*</span></font>
+                                </label>
+                                <div class="col-sm-4">
+                                    <asp:TextBox runat="server" ID="txtExperience" CssClass="form-control" placeholder="Experience"></asp:TextBox>
+                                </div>
+
                             </div>
                             <!-- END OF DIV row -->
 
@@ -439,19 +460,19 @@
 
                             <div class="form-group row">
                                 <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">
+                                    Country:<font face="Arial"><span class="style1">*</span></font>
+                                </label>
+                                <div class="col-sm-4">
+                                    <asp:DropDownList ID="cbEduCountry" runat="server" Width="100%"></asp:DropDownList>
+                                    </div>
+
+                                <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">
                                     City:<font face="Arial"><span class="style1">*</span></font>
                                 </label>
                                 <div class="col-sm-4">
                                     <asp:TextBox runat="server" ID="txtEduCity" CssClass="form-control" placeholder="City"></asp:TextBox>
                                 </div>
 
-
-                                <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">
-                                    Country:<font face="Arial"><span class="style1">*</span></font>
-                                </label>
-                                <div class="col-sm-4">
-                                    <asp:TextBox runat="server" ID="txtEduCountry" CssClass="form-control" placeholder="Country"></asp:TextBox>
-                                </div>
                             </div>
                             <!-- END OF DIV row -->
 
@@ -518,10 +539,11 @@
                                                 <asp:BoundField DataField="MajorSubjects" HeaderText="Subjects" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol" />
                                                 <asp:BoundField DataField="CompletionYear" HeaderText="Completion Year" />
                                                 <asp:BoundField DataField="City" HeaderText="City" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol"/>
-                                                <asp:BoundField DataField="Country" HeaderText="Country" />
+                                                <asp:BoundField DataField="CountryName" HeaderText="Country" />
                                                 <asp:BoundField DataField="ObtainMarks" HeaderText="Obtained Marks" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol" />
                                                 <asp:BoundField DataField="TotalMarks" HeaderText="Total Marks"  ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol"/>
                                                 <asp:BoundField DataField="Percentage" HeaderText="Percentage" />
+                                                <asp:BoundField DataField="Country" HeaderText="Country" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol"/>
                                             </Columns>
                                         </asp:GridView>
                             </div>
@@ -567,8 +589,8 @@
                                     Country:<font face="Arial"><span class="style1">*</span></font>
                                 </label>
                                 <div class="col-sm-4">
-                                    <asp:TextBox runat="server" ID="txtExperienceCountry" CssClass="form-control" placeholder="Country"></asp:TextBox>
-                                </div>
+                                    <asp:DropDownList ID="cbExperienceCountry" runat="server" Width="100%"></asp:DropDownList>
+                                    </div>
 
 
                             </div>
@@ -704,10 +726,10 @@
                                                 <asp:BoundField DataField="StartDate" HeaderText="Start Date" />
                                                 <asp:BoundField DataField="EndDate" HeaderText="End Date" />
                                                 <asp:BoundField DataField="Present" HeaderText="Present" />
-                                                <asp:BoundField DataField="Country" HeaderText="Country" />
+                                                <asp:BoundField DataField="CountryName" HeaderText="Country" />
                                                 <asp:BoundField DataField="WorkDescription" HeaderText="WorkDescription" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol" />
                                                 <asp:BoundField DataField="LeavingReason" HeaderText="Leaving Reason" />
-                     
+                                                <asp:BoundField DataField="Country" HeaderText="Country" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol"/>
                                             </Columns>
                                         </asp:GridView>
                             </div>

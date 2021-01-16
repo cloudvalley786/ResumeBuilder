@@ -163,8 +163,8 @@ namespace ResumeBuilder.connectors
         }
 
         public static string AddUpdateEmployerInfo(int ID,int userID,string nameFirst, string nameMiddle, string nameLast, string arabicName,
-            string fatherName,int genderID,int maritialStatus,DateTime dob, string email,string mobile,string city,string country,
-            string presentAddress,string permanentAddress, string cv,string Specilization , string Objective,int createdBy,int lastModified,out string employerID)
+            string fatherName,int genderID,int maritialStatus,DateTime dob, string email,string mobile,string city,int country,
+            string presentAddress,string permanentAddress, string cv,string Specilization , string Objective,int iqamaTransfer,string experience,int createdBy,int lastModified,out string employerID)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -182,7 +182,7 @@ namespace ResumeBuilder.connectors
             cmd.Parameters.Add("@PEmail", SqlDbType.NVarChar, 30).Value = email;
             cmd.Parameters.Add("@PMobile", SqlDbType.NVarChar, 25).Value = mobile;
             cmd.Parameters.Add("@PCity", SqlDbType.NVarChar, 50).Value = city;
-            cmd.Parameters.Add("@PCountry", SqlDbType.NVarChar, 50).Value = country;
+            cmd.Parameters.Add("@PCountry", SqlDbType.Int).Value = country;
             cmd.Parameters.Add("@PPresentAddress", SqlDbType.NVarChar, 1000).Value = presentAddress;
             cmd.Parameters.Add("@PPermanentAddress", SqlDbType.NVarChar, 1000).Value = permanentAddress;
             cmd.Parameters.Add("@PCV", SqlDbType.NVarChar, 150).Value = cv;
@@ -190,8 +190,10 @@ namespace ResumeBuilder.connectors
             cmd.Parameters.Add("@PObjective", SqlDbType.NVarChar, 1000).Value = Objective;
             cmd.Parameters.Add("@PCreatedBy", SqlDbType.Int).Value = createdBy;
             cmd.Parameters.Add("@PLastModifiedBy", SqlDbType.Int).Value = lastModified;
-            cmd.Parameters.Add("@PEmployerID", SqlDbType.Int).Direction = ParameterDirection.Output;
+            cmd.Parameters.Add("@PIqamaTransfer", SqlDbType.Bit).Value = iqamaTransfer;
+            cmd.Parameters.Add("@Pexperience", SqlDbType.NVarChar, 50).Value = experience;
 
+            cmd.Parameters.Add("@PEmployerID", SqlDbType.Int).Direction = ParameterDirection.Output;
             cmd.Parameters.Add("@PCode", SqlDbType.VarChar, 2).Direction = ParameterDirection.Output;
             cmd.Parameters.Add("@PDesc", SqlDbType.VarChar, 1000).Direction = ParameterDirection.Output;
             cmd.Parameters.Add("@PMsg", SqlDbType.VarChar, 2).Direction = ParameterDirection.Output;
@@ -323,7 +325,7 @@ namespace ResumeBuilder.connectors
         }
 
         public static string AddUpdateEmployerEdu(int ID, int employerID, string institute, int degree, string subjects, string year,
-            string city, string country,int obtainedMarks, int totalMarks,double percentage, int createdBy, int lastModified)
+            string city, int country,int obtainedMarks, int totalMarks,double percentage, int createdBy, int lastModified)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -335,7 +337,7 @@ namespace ResumeBuilder.connectors
             cmd.Parameters.Add("@PMajorSubjects", SqlDbType.NVarChar, 250).Value = subjects;
             cmd.Parameters.Add("@PCompletionYear", SqlDbType.NVarChar, 50).Value = year;
             cmd.Parameters.Add("@PCity", SqlDbType.NVarChar, 50).Value = city;
-            cmd.Parameters.Add("@PCountry", SqlDbType.NVarChar, 50).Value = country;
+            cmd.Parameters.Add("@PCountry", SqlDbType.Int).Value = country;
             cmd.Parameters.Add("@PObtainMarks", SqlDbType.Int).Value = obtainedMarks;
             cmd.Parameters.Add("@PTotalMarks", SqlDbType.Int).Value = totalMarks;
             cmd.Parameters.Add("@PPercentage", SqlDbType.Float).Value = percentage;
@@ -345,7 +347,7 @@ namespace ResumeBuilder.connectors
             return db.ExecuteNonQueryWithExpHndlng(cmd, cmd.CommandText);
         }
 
-        public static string AddUpdateEmployerExp(int ID, int employerID, string companyName, int companyType, string country,int role,
+        public static string AddUpdateEmployerExp(int ID, int employerID, string companyName, int companyType, int country,int role,
             DateTime startDate,DateTime endDate,int isPresent, string desc, string leavingReason, int createdBy, int lastModified)
         {
             SqlCommand cmd = new SqlCommand();
@@ -355,7 +357,7 @@ namespace ResumeBuilder.connectors
             cmd.Parameters.Add("@PEmployerID", SqlDbType.Int).Value = employerID;
             cmd.Parameters.Add("@PCompanyName", SqlDbType.NVarChar, 50).Value = companyName;
             cmd.Parameters.Add("@PCompanyType", SqlDbType.Int).Value = companyType;
-            cmd.Parameters.Add("@PCountry", SqlDbType.NVarChar, 50).Value = country;
+            cmd.Parameters.Add("@PCountry", SqlDbType.Int).Value = country;
             cmd.Parameters.Add("@PJobRole", SqlDbType.Int).Value = role;
             cmd.Parameters.Add("@PStartDate", SqlDbType.Date).Value = startDate.Date;
             cmd.Parameters.Add("@PEndDate", SqlDbType.Date).Value = endDate.Date;

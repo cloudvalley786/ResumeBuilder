@@ -67,11 +67,13 @@ namespace ResumeBuilder
                             txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                             txtMobile.Text = ds.Tables[0].Rows[0]["Mobile"].ToString();
                             txtCity.Text = ds.Tables[0].Rows[0]["City"].ToString();
-                            txtCountry.Text = ds.Tables[0].Rows[0]["Country"].ToString();
+                            cbCountry.SelectedValue = ds.Tables[0].Rows[0]["Country"].ToString();
                             txtPresentAddress.Text = ds.Tables[0].Rows[0]["PresentAddress"].ToString();
                             txtPermanentAddress.Text = ds.Tables[0].Rows[0]["PermanentAddress"].ToString();
                             txtSpecilization.Text = ds.Tables[0].Rows[0]["Specilization"].ToString();
                             txtObjective.Text = ds.Tables[0].Rows[0]["Objective"].ToString();
+                            rdIqamaTransfer.SelectedValue = ds.Tables[0].Rows[0]["IqamaTransfer"].ToString().ToLower() =="true"?"1":"0";
+                            txtExperience.Text = ds.Tables[0].Rows[0]["Experience"].ToString();
                             //hndID.Value = ds.Tables[0].Rows[0]["Photo"].ToString();
                         }
 
@@ -188,6 +190,24 @@ namespace ResumeBuilder
                 cbLanguageProficiency.DataTextField = "EName";
                 cbLanguageProficiency.DataValueField = "ID";
                 cbLanguageProficiency.DataBind();
+                // Nationality //
+                CLOVA.GetEmployerLovs("Nationality", out dt);
+                dr = dt.NewRow();
+                dr["ID"] = 0;
+                dr["EName"] = "-Select One-";
+                dt.Rows.InsertAt(dr, 0);
+                cbCountry.DataSource = dt;
+                cbCountry.DataTextField = "EName";
+                cbCountry.DataValueField = "ID";
+                cbCountry.DataBind();
+                cbEduCountry.DataSource = dt;
+                cbEduCountry.DataTextField = "EName";
+                cbEduCountry.DataValueField = "ID";
+                cbEduCountry.DataBind();
+                cbExperienceCountry.DataSource = dt;
+                cbExperienceCountry.DataTextField = "EName";
+                cbExperienceCountry.DataValueField = "ID";
+                cbExperienceCountry.DataBind();
             }
             catch (System.Threading.ThreadAbortException)
             {
@@ -267,7 +287,7 @@ namespace ResumeBuilder
                 string desc= CLOVA.AddUpdateEmployerInfo(Convert.ToInt32(id), Convert.ToInt32(hndUserID.Value), txtFirstName.Text,
                 txtMiddleName.Text, txtLastName.Text, txtArabicName.Text, txtFatherName.Text, Convert.ToInt32(cbEmployeesGender.SelectedValue),
                 Convert.ToInt32(cbMaritialStatus.SelectedValue), dob, txtEmail.Text, txtMobile.Text, txtCity.Text,
-                txtCountry.Text, txtPresentAddress.Text, txtPermanentAddress.Text, "", txtSpecilization.Text, txtObjective.Text, Convert.ToInt32(hndUserID.Value),
+                Convert.ToInt32(cbCountry.SelectedValue), txtPresentAddress.Text, txtPermanentAddress.Text, "", txtSpecilization.Text, txtObjective.Text, Convert.ToInt32(rdIqamaTransfer.SelectedValue),txtExperience.Text, Convert.ToInt32(hndUserID.Value),
                 Convert.ToInt32(hndUserID.Value),out employerID);
                 Session["employerID"] = employerID;
                 hndID.Value = employerID;
@@ -296,9 +316,10 @@ namespace ResumeBuilder
 
         protected void btnEducation(object sender, EventArgs e)
         {
-            hndEduID.Value = txtInstitute.Text = txtMajorSubjects.Text = txtEduCity.Text = txtEduCountry.Text = txtObtainMarks.Text =
+            hndEduID.Value = txtInstitute.Text = txtMajorSubjects.Text = txtEduCity.Text = txtObtainMarks.Text =
             txtTotalMarks.Text = txtPercentage.Text = string.Empty;
             cbDegree.SelectedValue = "0";
+            cbEduCountry.SelectedValue = "0";
             ddlCompletionYear.ClearSelection();
             RadTab expTab = RadTabStrip1.FindTabByText("Experience");
            expTab.Enabled = true;
@@ -311,9 +332,10 @@ namespace ResumeBuilder
 
         protected void btnEducationBack(object sender, EventArgs e)
         {
-            hndEduID.Value = txtInstitute.Text = txtMajorSubjects.Text = txtEduCity.Text = txtEduCountry.Text = txtObtainMarks.Text =
+            hndEduID.Value = txtInstitute.Text = txtMajorSubjects.Text = txtEduCity.Text = txtObtainMarks.Text =
             txtTotalMarks.Text = txtPercentage.Text = string.Empty;
             cbDegree.SelectedValue = "0";
+            cbEduCountry.SelectedValue = "0";
             ddlCompletionYear.ClearSelection();
             RadTab perTab = RadTabStrip1.FindTabByText("Personal");
             perTab.Selected = true;
@@ -330,14 +352,15 @@ namespace ResumeBuilder
             {
                 string id = string.IsNullOrEmpty((hndEduID.Value)) ? "0" : hndEduID.Value;
                 string desc = CLOVA.AddUpdateEmployerEdu(Convert.ToInt32(id), Convert.ToInt32(hndID.Value), txtInstitute.Text,
-                    Convert.ToInt32(cbDegree.SelectedValue), txtMajorSubjects.Text, ddlCompletionYear.Text, txtCity.Text, txtCountry.Text,
+                    Convert.ToInt32(cbDegree.SelectedValue), txtMajorSubjects.Text, ddlCompletionYear.Text, txtCity.Text, Convert.ToInt32(cbEduCountry.SelectedValue),
                     Convert.ToInt32(txtObtainMarks.Text), Convert.ToInt32(txtTotalMarks.Text), Convert.ToDouble(txtPercentage.Text),
                     Convert.ToInt32(hndUserID.Value), Convert.ToInt32(hndUserID.Value));
                 if (desc.ToLower().Contains("success"))
                 {
-                    hndEduID.Value = txtInstitute.Text = txtMajorSubjects.Text = txtEduCity.Text = txtEduCountry.Text = txtObtainMarks.Text =
+                    hndEduID.Value = txtInstitute.Text = txtMajorSubjects.Text = txtEduCity.Text = txtObtainMarks.Text =
                     txtTotalMarks.Text = txtPercentage.Text = string.Empty;
                     cbDegree.SelectedValue="0";
+                    cbEduCountry.SelectedValue = "0";
                     ddlCompletionYear.ClearSelection();
                     ddlCompletionYear.Items.FindByValue(System.DateTime.Now.Year.ToString()).Selected = true;
                     DataTable dt;
@@ -362,9 +385,10 @@ namespace ResumeBuilder
 
         protected void btnExperience(object sender, EventArgs e)
         {
-            hndExpID.Value = txtCompanyName.Text = txtExperienceCountry.Text = txtDescription.Text = txtLeavingReason.Text = string.Empty;
+            hndExpID.Value = txtCompanyName.Text  = txtDescription.Text = txtLeavingReason.Text = string.Empty;
             cbCompanyType.SelectedValue = "0";
             cbRole.SelectedValue = "0";
+            cbExperienceCountry.SelectedValue = "0";
             dtStartDate.Clear();
             dtEndDate.Clear();
             chkPresent.Checked = false;
@@ -378,9 +402,10 @@ namespace ResumeBuilder
 
         protected void btnExperienceBack(object sender, EventArgs e)
         {
-            hndExpID.Value = txtCompanyName.Text = txtExperienceCountry.Text = txtDescription.Text = txtLeavingReason.Text = string.Empty;
+            hndExpID.Value = txtCompanyName.Text = txtDescription.Text = txtLeavingReason.Text = string.Empty;
             cbCompanyType.SelectedValue = "0";
             cbRole.SelectedValue = "0";
+            cbExperienceCountry.SelectedValue = "0";
             dtStartDate.Clear();
             dtEndDate.Clear();
             chkPresent.Checked = false;
@@ -398,15 +423,16 @@ namespace ResumeBuilder
             {
                 string id = string.IsNullOrEmpty((hndExpID.Value)) ? "0" : hndExpID.Value;
                 string desc = CLOVA.AddUpdateEmployerExp(Convert.ToInt32(id), Convert.ToInt32(hndID.Value), txtCompanyName.Text,
-                    Convert.ToInt32(cbCompanyType.SelectedValue), txtExperienceCountry.Text, Convert.ToInt32(cbRole.SelectedValue),
+                    Convert.ToInt32(cbCompanyType.SelectedValue), Convert.ToInt32(cbExperienceCountry.SelectedValue), Convert.ToInt32(cbRole.SelectedValue),
                     Convert.ToDateTime(dtStartDate.SelectedDate), Convert.ToDateTime(dtEndDate.SelectedDate),
                     Convert.ToInt32(chkPresent.Checked),txtDescription.Text, txtLeavingReason.Text,
                     Convert.ToInt32(hndUserID.Value), Convert.ToInt32(hndUserID.Value));
                 if (desc.ToLower().Contains("success"))
                 {
-                    hndExpID.Value = txtCompanyName.Text = txtExperienceCountry.Text = txtDescription.Text = txtLeavingReason.Text = string.Empty;
+                    hndExpID.Value = txtCompanyName.Text = txtDescription.Text = txtLeavingReason.Text = string.Empty;
                     cbCompanyType.SelectedValue = "0";
                     cbRole.SelectedValue = "0";
+                    cbExperienceCountry.SelectedValue = "0";
                     dtStartDate.Clear();
                     dtEndDate.Clear();
                     chkPresent.Checked = false;
@@ -610,7 +636,7 @@ namespace ResumeBuilder
                 txtMajorSubjects.Text = grdEducation.Rows[rowno].Cells[6].Text;
                 ddlCompletionYear.Text = grdEducation.Rows[rowno].Cells[7].Text;
                 txtEduCity.Text = grdEducation.Rows[rowno].Cells[8].Text;
-                txtEduCountry.Text = grdEducation.Rows[rowno].Cells[9].Text;
+                cbEduCountry.SelectedValue = grdEducation.Rows[rowno].Cells[13].Text;
                 txtObtainMarks.Text = grdEducation.Rows[rowno].Cells[10].Text;
                 txtTotalMarks.Text = grdEducation.Rows[rowno].Cells[11].Text;
                 txtPercentage.Text = grdEducation.Rows[rowno].Cells[12].Text;
@@ -675,7 +701,7 @@ namespace ResumeBuilder
                 {
                     dtEndDate.SelectedDate = null;
                 }
-                txtExperienceCountry.Text = grdExperience.Rows[rowno].Cells[11].Text;
+                cbExperienceCountry.SelectedValue = grdExperience.Rows[rowno].Cells[14].Text;
                 txtDescription.Text = grdExperience.Rows[rowno].Cells[12].Text;
 
             }

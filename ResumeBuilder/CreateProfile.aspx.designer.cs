@@ -168,6 +168,15 @@ namespace ResumeBuilder
         protected global::System.Web.UI.WebControls.TextBox txtMobile;
 
         /// <summary>
+        /// cbCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cbCountry;
+
+        /// <summary>
         /// txtCity control.
         /// </summary>
         /// <remarks>
@@ -175,15 +184,6 @@ namespace ResumeBuilder
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCity;
-
-        /// <summary>
-        /// txtCountry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCountry;
 
         /// <summary>
         /// txtPresentAddress control.
@@ -220,6 +220,24 @@ namespace ResumeBuilder
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtObjective;
+
+        /// <summary>
+        /// rdIqamaTransfer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rdIqamaTransfer;
+
+        /// <summary>
+        /// txtExperience control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtExperience;
 
         /// <summary>
         /// PersonalInfo control.
@@ -285,6 +303,15 @@ namespace ResumeBuilder
         protected global::System.Web.UI.WebControls.DropDownList ddlCompletionYear;
 
         /// <summary>
+        /// cbEduCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cbEduCountry;
+
+        /// <summary>
         /// txtEduCity control.
         /// </summary>
         /// <remarks>
@@ -292,15 +319,6 @@ namespace ResumeBuilder
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEduCity;
-
-        /// <summary>
-        /// txtEduCountry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEduCountry;
 
         /// <summary>
         /// txtObtainMarks control.
@@ -393,13 +411,13 @@ namespace ResumeBuilder
         protected global::System.Web.UI.WebControls.TextBox txtCompanyName;
 
         /// <summary>
-        /// txtExperienceCountry control.
+        /// cbExperienceCountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExperienceCountry;
+        protected global::System.Web.UI.WebControls.DropDownList cbExperienceCountry;
 
         /// <summary>
         /// cbCompanyType control.
