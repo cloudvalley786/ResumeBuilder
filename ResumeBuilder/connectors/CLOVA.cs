@@ -162,6 +162,16 @@ namespace ResumeBuilder.connectors
             return db.FillDataSetWithExpHndlng(cmd, cmd.CommandText, out ds);
         }
 
+        public static string GetJobsData(int userID, out DataTable dt)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_HiringRequestsDataGet";
+            cmd.Parameters.Add("@PUserID", SqlDbType.Int).Value = userID;
+
+            return db.FillDataTableWithExpHndlng(cmd, cmd.CommandText, out dt);
+        }
+
         public static string AddUpdateEmployerInfo(int ID,int userID,string nameFirst, string nameMiddle, string nameLast, string arabicName,
             string fatherName,int genderID,int maritialStatus,DateTime dob, string email,string mobile,string city,int country,
             string presentAddress,string permanentAddress, string cv,string Specilization , string Objective,int iqamaTransfer,string experience,int createdBy,int lastModified,out string employerID)
@@ -527,6 +537,17 @@ namespace ResumeBuilder.connectors
             cmd.Parameters.Add("@PEmailID", SqlDbType.VarChar, 50).Value = emailID;
 
             return db.FillDataTableWithExpHndlng(cmd, cmd.CommandText, out dt);
+        }
+
+        public static string EmployerJobApply(int userID, int EmployerHiringRequestID)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_EmployerJobApply";
+            cmd.Parameters.Add("@PUserID", SqlDbType.Int).Value = userID;
+            cmd.Parameters.Add("@PEmployerHiringRequestID", SqlDbType.Int).Value = EmployerHiringRequestID;
+
+            return db.ExecuteNonQueryWithExpHndlng(cmd, cmd.CommandText);
         }
 
     }

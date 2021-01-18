@@ -122,6 +122,11 @@
 									</a>
 								</div>
 								<div class="btn-group" role="group">
+                                    <a href="Jobs.aspx" class="btn btn-nav">
+										<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span><div >Jobs</div>
+									</a>
+								</div>
+								<div class="btn-group" role="group">
                                      <a href="ChangePassword.aspx" class="btn btn-nav">
 										<span class="glyphicon glyphicon-lock" aria-hidden="true"></span><div >Change Password</div>
 									</a>

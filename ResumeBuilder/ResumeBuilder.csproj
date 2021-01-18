@@ -154,6 +154,7 @@
     <Content Include="Content\common\images\icn-twitter.jpg" />
     <Content Include="Content\common\images\icn-web.gif" />
     <Content Include="Content\common\images\image.jpg" />
+    <Content Include="Content\common\images\job.png" />
     <Content Include="Content\common\images\papertop.jpg" />
     <Content Include="Content\common\images\pbottom.jpg" />
     <Content Include="Content\common\images\pmid.jpg" />
@@ -164,6 +165,7 @@
     <Content Include="Content\common\js\html2canvas.min.js" />
     <Content Include="Content\common\js\jquery.blockUI.js" />
     <Content Include="Content\common\js\jspdf.min.js" />
+    <Content Include="Jobs.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -464,6 +466,13 @@
     </Compile>
     <Compile Include="CreateProfile.aspx.designer.cs">
       <DependentUpon>CreateProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Jobs.aspx.cs">
+      <DependentUpon>Jobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Jobs.aspx.designer.cs">
+      <DependentUpon>Jobs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layout.Master.cs">
       <DependentUpon>Layout.Master</DependentUpon>
