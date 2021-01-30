@@ -29,6 +29,7 @@
         .hiddencol { display: none; }
     </style>
  <div id="panel" class=" text-center">
+     <asp:Label ID="lblMsg" runat="server" Visible="false" style="color:red"></asp:Label>
                                         <asp:GridView ID="grdJobs"  runat="server" OnRowDataBound="grdJobs_RowDataBound" EmptyDataText="No records has been added." CssClass="table table-condensed" AutoGenerateColumns="false" ShowFooter="false">
                                             <Columns>
                                                  <asp:TemplateField HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="50px">

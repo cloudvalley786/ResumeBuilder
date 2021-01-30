@@ -481,7 +481,7 @@
                                     Obtain Marks:<font face="Arial"><span class="style1">*</span></font>
                                 </label>
                                 <div class="col-sm-4">
-                                    <asp:TextBox runat="server" ID="txtObtainMarks" onkeyup='calPer();' CssClass="form-control" onkeypress="return allowOnlyNumber(event);" placeholder="Obtain Marks"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txtObtainMarks" onkeyup='calPer();' CssClass="form-control" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 46 || event.charCode == 0 " placeholder="Obtain Marks"></asp:TextBox>
                                 </div>
 
 
@@ -489,7 +489,7 @@
                                     Total Marks:<font face="Arial"><span class="style1">*</span></font>
                                 </label>
                                 <div class="col-sm-4">
-                                    <asp:TextBox runat="server" ID="txtTotalMarks" onkeyup='calPer();' onkeypress="return allowOnlyNumber(event);" CssClass="form-control" placeholder="Total Marks"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txtTotalMarks" onkeyup='calPer();' onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 46 || event.charCode == 0 " CssClass="form-control" placeholder="Total Marks"></asp:TextBox>
                                 </div>
                             </div>
                             <!-- END OF DIV row -->

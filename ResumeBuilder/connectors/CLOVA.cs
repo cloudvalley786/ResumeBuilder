@@ -24,7 +24,7 @@ namespace ResumeBuilder.connectors
             cmd.Parameters.Add("@PPageName", SqlDbType.VarChar, 20).Value = page;
             cmd.Parameters.Add("@PLoginID", SqlDbType.Int).Value = loginID;
 
-            return db.ExecuteNonQueryWithExpHndlng(cmd, cmd.CommandText);
+            return db.ExecuteNonQueryWithExpHndlngErrorLog(cmd, cmd.CommandText);
 
         }
 

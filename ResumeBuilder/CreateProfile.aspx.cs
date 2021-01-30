@@ -81,12 +81,22 @@ namespace ResumeBuilder
                         {
                             grdEducation.DataSource = ds.Tables[1];
                             grdEducation.DataBind();
+                            EducationID.Disabled = false;
+                        }
+                        else
+                        {
+                            EducationID.Disabled = true;
                         }
 
                         if (ds.Tables[2].Rows.Count > 0)
                         {
                             grdExperience.DataSource = ds.Tables[2];
                             grdExperience.DataBind();
+                            ExperienceID.Disabled = false;
+                        }
+                        else
+                        {
+                            ExperienceID.Disabled = true;
                         }
 
                         if (ds.Tables[3].Rows.Count > 0)
@@ -322,11 +332,11 @@ namespace ResumeBuilder
             cbEduCountry.SelectedValue = "0";
             ddlCompletionYear.ClearSelection();
             RadTab expTab = RadTabStrip1.FindTabByText("Experience");
-           expTab.Enabled = true;
-           expTab.Selected = true;
-           RadMultiPage1.SelectedIndex = 2;
-           RadTab eduTab = RadTabStrip1.FindTabByText("Education");
-           eduTab.Enabled = false;
+            expTab.Enabled = true;
+            expTab.Selected = true;
+            RadMultiPage1.SelectedIndex = 2;
+            RadTab eduTab = RadTabStrip1.FindTabByText("Education");
+            eduTab.Enabled = false;
 
         }
 
@@ -367,6 +377,7 @@ namespace ResumeBuilder
                     CLOVA.GetEmployerEducation(Convert.ToInt32(hndID.Value), out dt);
                     grdEducation.DataSource = dt;
                     grdEducation.DataBind();
+                    EducationID.Disabled = false;
                     Session["Success"] = desc;
                     return;
                 }
@@ -443,6 +454,7 @@ namespace ResumeBuilder
                     CLOVA.GetEmployerExperience(Convert.ToInt32(hndID.Value), out dt);
                     grdExperience.DataSource = dt;
                     grdExperience.DataBind();
+                    ExperienceID.Disabled = false;
                     Session["Success"] = desc;
                     return;
                 }
@@ -660,6 +672,14 @@ namespace ResumeBuilder
                 CLOVA.GetEmployerEducation(Convert.ToInt32(hndID.Value), out dt);
                 grdEducation.DataSource = dt;
                 grdEducation.DataBind();
+                if(dt.Rows.Count>0)
+                {
+                    EducationID.Disabled = false;
+                }
+                else
+                {
+                    EducationID.Disabled = true;
+                }
             }
             catch (Exception ex)
             {
@@ -724,6 +744,14 @@ namespace ResumeBuilder
                 CLOVA.GetEmployerExperience(Convert.ToInt32(hndID.Value), out dt);
                 grdExperience.DataSource = dt;
                 grdExperience.DataBind();
+                if (dt.Rows.Count > 0)
+                {
+                    ExperienceID.Disabled = false;
+                }
+                else
+                {
+                    ExperienceID.Disabled = true;
+                }
             }
             catch (Exception ex)
             {

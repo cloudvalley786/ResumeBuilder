@@ -35,8 +35,18 @@ namespace ResumeBuilder
                 string desc = CLOVA.GetJobsData(Convert.ToInt32(Session["UserID"].ToString()), out dt);
                 if (desc.ToLower().Contains("success"))
                 {
-                    grdJobs.DataSource = dt;
-                    grdJobs.DataBind();
+                    if(dt.Rows.Count>0)
+                    {
+                        grdJobs.DataSource = dt;
+                        grdJobs.DataBind();
+                        lblMsg.Visible = false;
+                    }
+                    else
+                    {
+                        lblMsg.Text = "No records has been added.";
+                        lblMsg.Visible = true;
+                    }
+                    
                 }
             }
             catch (Exception ex)
